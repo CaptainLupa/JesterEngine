@@ -1,0 +1,217 @@
+5/25/21 - I am starting over on Chernos Game Engine Series.  I need to take this semi
+seriously if I want to ever do this as a career.  OpenGL may not be the best or most
+efficient api ever made, but it is a fantastic starting point.
+
+Over the summer I hope to get through a good chunk of Lord Chernos knowledge and make
+JesterEngine a real thing.
+
+Idk why I chose the name Jester, it just seemed cool I guess.
+
+Ok I'm gonna start the first video now.  Good luck me!
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+Video 1 - What is a game Engine?
+Platform for developers and content creators to make games or 3d applications.
+Doesn't even have to be a game.
+Unreal and Unity can be made for VR apps and movie graphics.
+All applications are just different ways of viewing data.
+
+Cherno Definition - A way to transform data from one form to another.
+read files, show it as something else.
+provide a way to interact with that data.
+
+Game engines can have own versions of obj and jpg etc... used for optimization
+Many many systems in a game engine.
+Platform Abstraction systems, Windows Max Linux and console specific parts.
+
+You can write code that is generalized for all systems like a c++ template.
+
+i.e. ->
+
+template<systemname SN>
+runOnSystem(SN);
+
+runOnSystem(XboxSX);
+runOnSystem(PS5);
+runOnSystem(MAC);
+etc...
+
+This is wrong btw...
+
+its more like uhhhhhhhhhhhmmmmmmmmmmmm
+
+
+hmmmm
+
+#ifdef XBOXSX
+runOnSystem(XboxSx);
+#endif
+
+yeah thats more accurate I think...
+
+
+
+--------------------------------------------------------------------------------
+
+Alright that's video one done.  Very neat.
+
+Good to look at what a game engine is on a really high level to simplify the stuff
+that I'll be doing at some point.
+
+ok video 2 time yeehaw mothefuckers... who is reading this it's just me you cumwad...
+
+--------------------------------------------------------------------------------
+
+Video 2 - Designing our game engine.
+
+I lied im taking a shower now i am stinky boi
+
+9:22pm leaving...
+
+9:42 I return
+
+hehe
+
+perfect timing lel
+
+ok Video 2.
+
+I should really subscribe to https://www.patreon.com/thecherno ;)))))))))))
+
+wowow game engine is hard WOOOWWWW
+lol
+
+ok ill stop
+
+
+Entry Point
+	- What happens when game made with Engine is launched.
+	- What controls what happens
+
+Application Layer
+	- Input events, window Resize events, all types of events are  handled in the App Layer.
+	- All the things that the app wants to do with the game engine are put through the
+	Application Layer.
+	- Basically a link from App made with engine, to the actual engine software.
+
+Window Layer
+	- Only exists on desktop platforms, Mac, Windows, Linux.
+	- On mobile platforms, you are more given a surface or an app than creating the whole thing
+	from scratch.
+		- Input
+			- Where is the mouse?
+			- Is the space bar currently pressed
+			- State checking is in here too
+		- Events
+			-When an event happens, engine is notified and stuff happens
+
+Renderer
+	- Biggest and most complicated thing in the engine.
+	- Easier to make once all the above systems are built and implemented.
+
+Render API Abstraction
+	- Support multiple rendering API's in engine
+	- at first, only openGL.
+
+Debugging Support
+	- Need ways to see what's going on in the program.
+	- Logging systems
+	- In the engine and not just break points in VS
+
+Scripting language
+
+Memory Systems
+	- Custom Allocators
+	- For performance
+
+Entity Component System(ECS)
+	- Way to create game objects in the world that have systems or behavior
+
+Physics
+
+File I/O
+
+Virtual File System
+
+Build System
+	- own format of files
+	- Fart.jester
+
+--------------------------------------------------------------------------------
+
+Yoho yoho video 2 done.
+
+Good to have layout.
+
+bro these Rahas reflection questions hit different in Atom Open Source Text Editor :coom:
+
+--------------------------------------------------------------------------------
+
+Video 3 - Project Setup
+
+Create JesterEngine project
+
+Delete 32bit platforms
+	- In Project properties, under platform, go to configuration manager.
+	- Remove both x86 and win32 wherever you see it, leave x64.
+
+Change configuration type from exe to dll
+
+Output and Intermediate Directory set up ideal
+
+Output - $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\
+Intermediate - $(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\
+
+Create MR.0 Project
+
+JesterEngine will be the dll engine thingies
+
+MR.0 will be the sandbox application
+
+I called it that because of the One Piece Character Mr 0 and his ability to turn
+into sand lol.
+
+make sure to give MR.0 the same setup as JesterEngine
+
+Set MR.0 as startup project
+
+Go into solution with text editor, move MR.0 above JesterEngine.
+
+Add JesterEngine as reference in MR.0
+
+Properties->add->reference->JesterEngine
+
+In JesterEngine\src\Test.h declare "void Print();""
+add "__declspec(dllexport)" to the front of Print declaration.
+
+Define Print() in Test.cpp, duh.
+
+In MR.0, REDECLARE void Print in the Jester namespace, but this time with
+__declspec(dllimport) in front
+
+"__declspec(dllimport) void Print();"
+
+Then use it in int main as a normal function, "Jester::Print();"
+
+As of now, JesterEngine.dll is not copied from its output directory into MR.0's
+output directory, so F5 to run doesn't work, "A dependent dll was not found"
+
+This will be automated with premake at some point but for now just copy JesterEngine.dll
+into MR.0 manually.
+
+--------------------------------------------------------------------------------
+
+Ok well that does it for day 1 of whatever this is, I guess I'm writing a diary
+about it now.
+
+Ew what a word... Diary...
+
+Anyway, I'm going to bed, very tired, it's 11pm rn, got a math test tomorrow.
+Gotta charge my iPad so I can take said test.
+
+Goodnight.
