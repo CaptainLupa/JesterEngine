@@ -215,3 +215,50 @@ Anyway, I'm going to bed, very tired, it's 11pm rn, got a math test tomorrow.
 Gotta charge my iPad so I can take said test.
 
 Goodnight.
+
+---------------------------------------------------------------------------------------------------------
+
+Ok hello again my friends it is now 5/31 and it's been awhile, I have no excuse I was just lazy lol.
+
+But now we will continue with Video 4, Entry Point!!
+
+----------------------------------------------------------------------------------------
+
+The entry point to the program is currently housed inside of Mr.0.
+
+This is not what we want as JesterEngine should be the thing that runs everything.
+
+To start, there should be some sort of application class in the JesterEngine project.
+This class will "house" the appliation that is running on the engine.
+
+This class has a function called run that just runs the application, for now,
+it is a simple while(true) loop that just goes forever.
+
+
+There is also a core.h file somewhere where I'll define a bunch of macros n shit.
+
+Making a class in the JesterEngine project comes with the problem of it being built into a .dll file, where we have to put the __declspec(dllexport/dllimport) stuff.
+This is remedied by having a macro in the core.h file.
+
+This macro will be project dependent with a #ifdef JS_DLL_BUILD, this signals to define the macro "JESTER_API" as __declspec(dllexport), and if JS_DLL_BUILD is not defined,
+JESTER_API will be __declspec(dllimport)
+
+Gonna go implement this real quick.
+
+Also as a quick note, JS_PLATFORM_WINDOWS is also a thing to identify platform but I dont think I'll have to worry about that for a while lol.
+
+Another quick note for myself, if you are trying to get to C/C++ options in project properties and it's not there, just make a random C++ file in the project.
+
+Make sure to make the Application desstructor virutal so it is implemented by the actual Application not the engine.
+
+Make a Jester.h file just in src, to be included by client applications.  
+
+In Sandbox.cpp in MR.0, create a class called Sandbox, which inherits public Jester::Application.
+
+To instantiate the Sandbox class, create it on the heap.  "Sandbox* sandbox = new Sandbox();"
+This is because Sandbox could potentially be very big and we want to control it's lifetime explicitely.  Don't forget to delete!
+
+In Jester folder, make EntryPoint.h, this will define the Applications main func.
+
+This is done by writing the main func with (int argc, char** argv), and then using extern, grab a Jester::Application pointer from somewhere.
+

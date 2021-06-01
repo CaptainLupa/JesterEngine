@@ -1,3 +1,6 @@
-*.vs/
+# Files
 *.user
 *.suo
+
+# Directories
+.vs/
