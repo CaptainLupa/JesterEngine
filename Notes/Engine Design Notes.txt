@@ -316,3 +316,60 @@ If you have any questions look at the fucking code you monkey.
 ok on to the next video, Premake, gonna automate the fuk outta that dll copying :chungus:
 --------------------------------------------------------------------------
 
+HOW TO DOWNLOAD AND USE PREMAKE
+1. donwload zip from github
+2. make dir in solutiondir, slap premake5.exe in there with the LICENSE.txt
+3. in the solutiondir, create premake5.lua 
+4. put 'workspace "Solution"' at the top, ignore the single quotes retard
+5. under that put 'architecture "x64"' because 32 bit is for losers
+6. under that put configurations, debug release, dist, ect...
+	- Debug: For devving
+	- Release: For Devving, but fast and does losers
+	- Dist: The actual distribution of the program
+7. create project with same name as the one in VS.
+8. use 'location "JesterEngine"' to make everything in the project relative to that path.
+9. set 'kind "SharedLib"', specifies JesterEngine as dll producer thingy
+10. 'language "C++"'
+11. create variable for paths
+	- outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+					(debug/release) ( platform )  (      duh       )
+
+12. 'targetdir ("bin/" .. outputdir .. "/%{prj.name})'
+13. 'objdir ("bin-int/" .. outputdir .. "/%{prj.name})'
+14. 'files {
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+     }'
+15. 'include {
+	 	"%{prj.name}/vendor/spdlog/include"
+     }
+16. filter "system:windows" basically if(system == windows) and everything underneath gets parsed if true
+17. under filter set 'cppdialect "C++17"' because we are swag af.
+18. 'staticruntime "On"' 
+19. 'systemversion "latest"'
+20. Finally the defines
+	just 'defines { "macro", "macro2", ... }' yeah
+21. Postbuild step to put dll into MR.0
+	- 'postbuildcommands {
+	       ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/MR.0")
+	   }'
+22. filter for configurations, debug, release etc...
+	- ex. 'filer "configurations:Debug"'
+	- defines: "JS_DEBUG" for debug, "JS_RELEASE" for release, "JS_DIST" for dist
+	- symbols "On" for debug, optimize: "On" for release and Dist
+
+23. project "MR.0"
+	- location "MR.0"
+	- kind "ConsoleApp"
+
+	- Copy everything, get rid of DLL_BUILD define, add "JesterEngine/src" as an include and change out %{prj.name} for JesterEngine, delete postbuildcommands
+	- add 'links { "JesterEngine" }'
+
+24. include should be includedirs lol
+
+create a .bat file with contents:
+
+call vendor\premake5\premake5.exe vs2019
+PAUSE
+
+ALright time to write all of this out and test it.
