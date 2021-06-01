@@ -373,3 +373,11 @@ call vendor\premake5\premake5.exe vs2019
 PAUSE
 
 ALright time to write all of this out and test it.
+
+----------------------------------------------------------------------------
+Ok so I'm done with premake, I worked out a kind where i put JesterEngine as the location for MR.0, but other than that it worked fine.
+
+It is also the next day, idk why I didn't write anymore yesterday lol
+
+Gonna start Event system planning now.
+-----------------------------------------------------------------------------

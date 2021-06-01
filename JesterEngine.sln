@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JesterEngine", "JesterEngine\JesterEngine.vcxproj", "{48790EDC-34DC-9D80-DD61-D636C9A36903}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MR.0", "JesterEngine\MR.0.vcxproj", "{A2AB887C-8EE2-890D-37CF-6F1023E5050F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MR.0", "MR.0\MR.0.vcxproj", "{A2AB887C-8EE2-890D-37CF-6F1023E5050F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -23,7 +23,8 @@ project "JesterEngine"
 	}
 
 	includedirs {
-		"%{prj.name}/ThirdPartyLibs/spdlog/include"
+		"%{prj.name}/ThirdPartyLibs/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	filter "system:windows"
@@ -54,7 +55,7 @@ project "JesterEngine"
 
 
 project "MR.0"
-	location "JesterEngine"
+	location "MR.0"
 	kind "ConsoleApp"
 	language "C++"
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Application.h"
+
 #ifdef JS_PLATFORM_WINDOWS
 
 extern Jester::Application* Jester::CreateApplication();
