@@ -270,3 +270,49 @@ The Compiler takes care of the rest I guess, idk how it really works lol.
 ----------------------------------------------------------------------
 Ok That's the end of Video 4, time to do Logging, vid 5
 ----------------------------------------------------------------------
+
+ Adding SPDLOG as a git submodule.
+
+ This allows for automaticish updates as I'm not really donwloading the code directly, its referencing an existing git repository and pulling the updates from there whenever I say Update.
+
+ to add a submodule, use cmd and in the directory you want, type "git submodule add <desired url> <desired path>"
+
+ To implement the spdlog library, wrap it in a class to disguise it as a JesterAPI function, not just spdlog stuff.
+
+ make a Log class
+
+ There will be two Console objects, one for the engine and one for the client.
+ These will be defined as static in the Log class.
+
+ in the Log init function, the spdlog::set_pattern function is called.
+ This sets the formatting pattern for the logging system.
+
+ so the format Cherno did was "%^[%T] %n: %v%$", I will now decode it.
+
+ %^ = start color range
+ %$ = end color range
+ I guess everything between these are colored whatever you decide
+ %T = Timestamp in "H:M:S", 24h clock
+ %n = Name of the console, so Client or Core
+ %v = Actual text to log
+
+ more formatting here: https://github.com/gabime/spdlog/wiki/3.-Custom-formatting
+
+ so basically it will log something like:
+ "[10:53:30] Core Logger: Jim Fucking Died."
+
+ The full call for a console print with this set up right now is Jester::Log::getCoreLogger()->trace("whatever");
+ This is very verbose and cumbersome, so were gonna put it in a bunch of macros
+
+ #define JS_CORE_ERROR(...) ::Jester::Log::getCoreLogger()->error(__VA_ARGS__)
+
+ This is done for the client logger as well.
+
+--------------------------------------------------------------------------
+That should be all of the stuff done for the logging system.
+
+If you have any questions look at the fucking code you monkey.
+
+ok on to the next video, Premake, gonna automate the fuk outta that dll copying :chungus:
+--------------------------------------------------------------------------
+

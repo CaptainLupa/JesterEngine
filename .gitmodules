@@ -1,0 +1,3 @@
+[submodule "JesterEngine/ThirdPartyLibs/spdlog"]
+	path = JesterEngine/ThirdPartyLibs/spdlog
+	url = https://github.com/gabime/spdlog
