@@ -262,3 +262,11 @@ In Jester folder, make EntryPoint.h, this will define the Applications main func
 
 This is done by writing the main func with (int argc, char** argv), and then using extern, grab a Jester::Application pointer from somewhere.
 
+the Jester::Application pointer is grabbed from the application itself. So in Sandbox.cpp, there is a definition for Jester::CreateApplication();
+it is "return new Sandbox;"
+Thats it, that's all it takes.
+The Compiler takes care of the rest I guess, idk how it really works lol.
+
+----------------------------------------------------------------------
+Ok That's the end of Video 4, time to do Logging, vid 5
+----------------------------------------------------------------------
