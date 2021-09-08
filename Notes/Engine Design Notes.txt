@@ -276,6 +276,7 @@ Ok That's the end of Video 4, time to do Logging, vid 5
  This allows for automaticish updates as I'm not really donwloading the code directly, its referencing an existing git repository and pulling the updates from there whenever I say Update.
 
  to add a submodule, use cmd and in the directory you want, type "git submodule add <desired url> <desired path>"
+ WHOLE PROJECT MUST BE GIT REPOSITORY TO ADD SUBMODULE!!!!!!!!!
 
  To implement the spdlog library, wrap it in a class to disguise it as a JesterAPI function, not just spdlog stuff.
 
